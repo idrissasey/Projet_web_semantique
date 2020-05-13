@@ -30,10 +30,11 @@ prefixeRealisateur   = "PREFIX REALISATEUR:      <http://www.semanticweb.org/nat
 
 #################################################################################################################################################
 #################################################### PREFIXE DATA PROPERTIES ####################################################################
-prefixApourAnnee     = "PREFIX : <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLDataProperty_2154ceef_5ff4_4404_b036_b6503aaeca98>"
-prefixApourNombre    = "PREFIX : <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLDataProperty_4b21da79_be21_4d19_a998_022128a28404>"
-prefixApourDuree     = "PREFIX : <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#aPourDuree>"
-prefixApourNote      = "PREFIX : <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#aPourNote>"
+prefixeApourCodePostal= "PREFIX : <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLDataProperty_fdbe3524_025a_47b5_9fbb_381b2841449e>"
+prefixApourAnnee      = "PREFIX : <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLDataProperty_2154ceef_5ff4_4404_b036_b6503aaeca98>"
+prefixApourNombre     = "PREFIX : <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLDataProperty_4b21da79_be21_4d19_a998_022128a28404>"
+prefixApourDuree      = "PREFIX : <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#aPourDuree>"
+prefixApourNote       = "PREFIX : <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#aPourNote>"
 
 #################################################################################################################################################
 #################################################### PREFIXE OBJECT PROPERTIES ####################################################################
@@ -78,10 +79,11 @@ with open('../donnes brutes/films_paris.csv', newline='') as csvfile:
               reponse = requests.post('http://localhost:3030/antology/update',
               data={'update': requestInsertAnnee})
 
-              requestInsertVile           = prefixeVille + ' ' + prefixRDFS + ' INSERT DATA { VILLE:ville' + row['ardt'] + ' rdfs:label "' + row['ardt'] + '"}' 
-              requestInsertPays           = prefixPays +  ' ' + prefixRDFS + ' INSERT DATA { PAYS:france rdfs:label "France"}'   
-              requestInsertSeSitueDans    = prefixPays + ' ' + prefixeVille + ' ' + prefixSeSitueDans + ' INSERT DATA { :ville' + row['ardt'] + ' :OWLObjectProperty_140106e4_206f_4d61_8955_6550607692e5 :france}'
-
+              requestInsertVile            = prefixeVille + ' ' + prefixRDFS + ' INSERT DATA { VILLE:ville' + row['ardt'] + ' rdfs:label "' + row['ardt'] + '"}' 
+              requestInsertPays            = prefixPays +  ' ' + prefixRDFS + ' INSERT DATA { PAYS:france rdfs:label "France"}'   
+              requestInsertSeSitueDans     = prefixPays + ' ' + prefixeVille + ' ' + prefixSeSitueDans + ' INSERT DATA { :ville' + row['ardt'] + ' :OWLObjectProperty_140106e4_206f_4d61_8955_6550607692e5 :france}'
+              requestInsertApourCodePostal = prefixPays + ' ' + prefixeVille + ' ' + prefixeApourCodePostal + ' INSERT DATA { :ville' + row['ardt'] + ' :OWLDataProperty_fdbe3524_025a_47b5_9fbb_381b2841449e :'+ row['ardt'] +'}'
+              
               reponse = requests.post('http://localhost:3030/antology/update',
               data={'update': requestInsertVile})
 
@@ -91,9 +93,12 @@ with open('../donnes brutes/films_paris.csv', newline='') as csvfile:
               reponse = requests.post('http://localhost:3030/antology/update',
               data={'update': requestInsertSeSitueDans})
 
+              reponse = requests.post('http://localhost:3030/antology/update',
+              data={'update': requestInsertApourCodePostal})
+
               compteur = compteur + 1
 
-       print(response.json())
+
            
 
 
