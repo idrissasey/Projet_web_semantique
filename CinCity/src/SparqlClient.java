@@ -51,6 +51,7 @@ public class SparqlClient {
 	public Iterable<Map<String, String>> select(String queryString) {
 		Document document = httpGetXmlContent(queryString);
 		List<Map<String, String>> results = new LinkedList<Map<String, String>>();
+		System.out.println(results + " ee ");
 		NodeList resultNodes = document.getElementsByTagName("result");
 		for (int i = 0; i < resultNodes.getLength(); i++) {
 			Node resultNode = resultNodes.item(i);

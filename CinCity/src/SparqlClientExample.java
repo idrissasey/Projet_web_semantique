@@ -46,11 +46,21 @@ public class SparqlClientExample {
 
 	private static void insertObject(SparqlClient sparqlClient, String csvFile, String cvsSplitBy) {
 		String line;
-		nbPersonnesParPiece(sparqlClient);
+		// nbPersonnesParPiece(sparqlClient);
 		System.out.println("ajout d'une personne dans le bureau:");
-		String prefixPopulation = "PREFIX RECENSEMENT: <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_5c0ace4a_18fa_4172_a4d7_f3317cdf79e0>>";
+		String prefixPopulation = "PREFIX RECENSEMENT: <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_5c0ace4a_18fa_4172_a4d7_f3317cdf79e0>";
 		String prefixAnnee = "PREFIX ANNEE <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_bc3d0556_265a_4f58_b5bb_17321bc1fbf6>";
 		String prefixLieu = "PREFIX LIEU <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_51a5bd12_b945_4ba6_8b98_67f56a7f4a96>";
+
+		String prefixeRecensement = "PREFIX RECENSEMENT:      <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_5c0ace4a_18fa_4172_a4d7_f3317cdf79e0>";
+
+		String prefixRDFS = "PREFIX rdfs: <http://www.w3.org/2000/01/rdfs-schema#>";
+		String prefixRDF = "PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>";
+		String prefixOWL = "PREFIX owl:  <http://www.w3.org/2002/07/owl#>";
+
+		String prefixAPourRecensement = "PREFIX : <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLObjectProperty_ea54c651_cd09_4455_a859_33e01977d630>";
+		String prefixApourAnnee = "PREFIX : <http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLDataProperty_2154ceef_5ff4_4404_b036_b6503aaeca98>";
+
 		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
 			while ((line = br.readLine()) != null) {
@@ -60,20 +70,20 @@ public class SparqlClientExample {
 				System.out.println(country.length + "  " + country);
 				System.out.println(country.length + country[0] + " " + country[1] + " " + country[2]);
 
-				String requestInsertLieu = prefixLieu + "INSERT DATA { LIEU:" + country[0] + " rdfs:label " + country[0]
-						+ "}";
-				String requestInsertRecensement = prefixPopulation + "INSERT DATA { RECENSEMENT:" + country[2]
+				String requestInsertLieu = prefixLieu + " " + prefixRDFS + " INSERT DATA { LIEU:" + country[0]
+						+ " rdfs:label " + country[0] + "}";
+				String requestInsertRecensement = prefixPopulation + " " + prefixRDFS + " " + prefixeRecensement
+						+ " INSERT DATA { RECENSEMENT:" + country[1] + " rdfs:label " + country[1] + "}";
+				String requestInsertAnnee = prefixAnnee + " " + prefixRDFS + " INSERT DATA { ANNEE :" + country[2]
 						+ " rdfs:label " + country[2] + "}";
-				String requestInsertAnnee = prefixAnnee + "INSERT DATA { ANNEE :" + country[3] + " rdfs:label "
-						+ country[3] + "}";
-				String requestInsertRecenAnnne = prefixAnnee + "INSERT DATA {:" + country[2] + " :a pour annee :"
-						+ country[3] + "}";
+				String requestInsertRecenAnnne = prefixAnnee + " " + prefixRDFS + " " + prefixApourAnnee
+						+ " INSERT DATA {:" + country[1] + " :a pour annee :" + country[2] + "}";
 
-				String requestPop = prefixAnnee + "INSERT DATA { :" + country[0] + ":a pour recensement" + ":"
-						+ country[2] + "}";
+				String requestPop = prefixAnnee + " " + prefixRDFS + " " + prefixAPourRecensement + " INSERT DATA { :"
+						+ country[0] + ":a pour recensement" + ":" + country[1] + "}";
 
 				if (sparqlClient.update(requestInsertRecensement) && sparqlClient.update(requestInsertAnnee)) {
-
+					System.out.println("here we are ");
 					if (sparqlClient.update(requestInsertRecenAnnne) && sparqlClient.update(requestInsertLieu))
 						sparqlClient.update(requestPop);
 
@@ -90,17 +100,19 @@ public class SparqlClientExample {
 			e.printStackTrace();
 		}
 
-		nbPersonnesParPiece(sparqlClient);
+		// nbPersonnesParPiece(sparqlClient);
 	}
 
 	private static void nbPersonnesParPiece(SparqlClient sparqlClient) {
-		String query = "PREFIX : <http://www.lamaisondumeurtre.fr#>\n"
-				+ "SELECT ?piece (COUNT(?personne) AS ?nbPers) WHERE\n" + "{\n"
-				+ "    ?personne :personneDansPiece ?piece.\n" + "}\n" + "GROUP BY ?piece\n";
+
+		String query = "SELECT ?lieu ?annee ?recensement  WHERE\n" + "{\n"
+				+ "    ?lieu :a pour recensement ?recensement.\n" + "}\n" + "GROUP BY ?lieu\n";
+		System.err.println(query);
 		Iterable<Map<String, String>> results = sparqlClient.select(query);
 		System.out.println("nombre de personnes par pièce:");
 		for (Map<String, String> result : results) {
-			System.out.println(result.get("piece") + " : " + result.get("nbPers"));
+			System.out.println(result.get("lieu") + " : " + result.get("annee") + " : " + result.get("recensement"));
 		}
+
 	}
 }
