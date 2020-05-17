@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns="http://knowledgeweb.semanticweb.org/heterogeneity/alignment"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<Alignment>
+<xml>yes</xml>
+<level>0</level>
+<type>??</type>
+<onto1>http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161</onto1>
+<onto2>http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161</onto2>
+<uri1>http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161</uri1>
+<uri2>http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161</uri2>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_11985763_f834_40e8_8a04_414bbd5bed3d"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Place"/>
+		<measure rdf:datatype="xsd:float">0.52</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_7942daab_732a_4556_a6e4_3a4a9f23bbef"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Country"/>
+		<measure rdf:datatype="xsd:float">0.51</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_1ae1f291_9271_4188_bccd_456fde6439b2"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Genre"/>
+		<measure rdf:datatype="xsd:float">0.51</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_7d543f0f_5a71_448b_a058_50b72eff1bed"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Person"/>
+		<measure rdf:datatype="xsd:float">0.51</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_3aac3b4b_45d9_4699_a491_5ef7adb05707"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Artist"/>
+		<measure rdf:datatype="xsd:float">0.52</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_2774958d_3ea7_4c85_ad35_f8aa12c1bff8"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Actor"/>
+		<measure rdf:datatype="xsd:float">0.51</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_b3ec988b_3df8_44bc_bb90_2242c83e3158"/>
+		<entity2 rdf:resource="http://schema.org/Movie"/>
+		<measure rdf:datatype="xsd:float">0.7</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_b3ec988b_3df8_44bc_bb90_2242c83e3158"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Film"/>
+		<measure rdf:datatype="xsd:float">0.51</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_c8ba1974_f121_4998_954d_6c0d3bd8c372"/>
+		<entity2 rdf:resource="http://schema.org/Continent"/>
+		<measure rdf:datatype="xsd:float">0.51</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_c8ba1974_f121_4998_954d_6c0d3bd8c372"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Continent"/>
+		<measure rdf:datatype="xsd:float">0.9</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_e09aacdb_a419_4354_993b_d2c5df3e75fd"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Actor"/>
+		<measure rdf:datatype="xsd:float">0.51</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_e09aacdb_a419_4354_993b_d2c5df3e75fd"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Comedian"/>
+		<measure rdf:datatype="xsd:float">0.57</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_307442a0_341a_4f9c_8b87_a34b48f926c9"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Woman"/>
+		<measure rdf:datatype="xsd:float">0.5</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_b17023e7_b9e3_44b2_b72d_36b9ee82e31b"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Man"/>
+		<measure rdf:datatype="xsd:float">0.5</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_51a5bd12_b945_4ba6_8b98_67f56a7f4a96"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/Town"/>
+		<measure rdf:datatype="xsd:float">0.65</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+<map>
+	<Cell>
+		<entity1 rdf:resource="http://www.semanticweb.org/nathalie/ontologies/2017/1/untitled-ontology-161#OWLClass_51a5bd12_b945_4ba6_8b98_67f56a7f4a96"/>
+		<entity2 rdf:resource="http://dbpedia.org/ontology/City"/>
+		<measure rdf:datatype="xsd:float">0.51</measure>
+		<relation>=</relation>
+	</Cell>
+</map>
+</Alignment>
+</rdf:RDF>
