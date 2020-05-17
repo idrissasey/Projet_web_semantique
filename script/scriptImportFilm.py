@@ -58,7 +58,7 @@ prefixRDF     = "PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
 prefixOWL     = "PREFIX owl:  <http://www.w3.org/2002/07/owl#>"
       
 compteur = 0
-with open('../donnes brutes/films_paris.csv', newline='') as csvfile:
+with open('../donnes brutes/films_paris.csv', newline='\n', encoding='utf-8') as csvfile:
        reader = csv.DictReader(csvfile)
        for row in reader:
               requestInsertFilm           = prefixFilm + ' ' + prefixRDFS + ' INSERT DATA { FILM:film'+str(compteur) +' rdfs:label "' + row['titre'] + '"}' 
@@ -67,16 +67,16 @@ with open('../donnes brutes/films_paris.csv', newline='') as csvfile:
               requestInsertAnnee          = prefixAnnee + ' ' + prefixRDFS + ' INSERT DATA { ANNEE:annee' + str(compteur) + ' rdfs:label "' + row['date_fin'] + '"}' 
               
 
-              response = requests.post('http://localhost:3030/antology/update',
+              response = requests.post('http://localhost:3030/cinema/update',
               data={'update': requestInsertFilm})
               
-              reponse = requests.post('http://localhost:3030/antology/update',
+              reponse = requests.post('http://localhost:3030/cinema/update',
               data={'update': requestInsertRealisateur})
 
-              reponse = requests.post('http://localhost:3030/antology/update',
+              reponse = requests.post('http://localhost:3030/cinema/update',
               data={'update': requestInsertARealise})
 
-              reponse = requests.post('http://localhost:3030/antology/update',
+              reponse = requests.post('http://localhost:3030/cinema/update',
               data={'update': requestInsertAnnee})
 
               requestInsertVile            = prefixeVille + ' ' + prefixRDFS + ' INSERT DATA { VILLE:ville' + row['ardt'] + ' rdfs:label "' + row['ardt'] + '"}' 
@@ -84,16 +84,16 @@ with open('../donnes brutes/films_paris.csv', newline='') as csvfile:
               requestInsertSeSitueDans     = prefixPays + ' ' + prefixeVille + ' ' + prefixSeSitueDans + ' INSERT DATA { :ville' + row['ardt'] + ' :OWLObjectProperty_140106e4_206f_4d61_8955_6550607692e5 :france}'
               requestInsertApourCodePostal = prefixPays + ' ' + prefixeVille + ' ' + prefixeApourCodePostal + ' INSERT DATA { :ville' + row['ardt'] + ' :OWLDataProperty_fdbe3524_025a_47b5_9fbb_381b2841449e :'+ row['ardt'] +'}'
               
-              reponse = requests.post('http://localhost:3030/antology/update',
+              reponse = requests.post('http://localhost:3030/cinema/update',
               data={'update': requestInsertVile})
 
-              reponse = requests.post('http://localhost:3030/antology/update',
+              reponse = requests.post('http://localhost:3030/cinema/update',
               data={'update': requestInsertPays})
 
-              reponse = requests.post('http://localhost:3030/antology/update',
+              reponse = requests.post('http://localhost:3030/cinema/update',
               data={'update': requestInsertSeSitueDans})
 
-              reponse = requests.post('http://localhost:3030/antology/update',
+              reponse = requests.post('http://localhost:3030/cinema/update',
               data={'update': requestInsertApourCodePostal})
 
               compteur = compteur + 1
